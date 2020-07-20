@@ -61,9 +61,9 @@
                             />
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col d-flex justify-content-center">
-                            <button class="btn btn-danger mr-5">Close</button>
+                    <div class="modal-footer">
+                        <div class="d-flex justify-content-center">
+                            <button class="btn btn-danger mr-5" data-dismiss="modal">Close</button>
                             <button class="btn btn-primary">Submit</button>
                         </div>
                     </div>

@@ -39079,9 +39079,16 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col d-flex justify-content-center" }, [
-        _c("button", { staticClass: "btn btn-danger mr-5" }, [_vm._v("Close")]),
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c("div", { staticClass: "d-flex justify-content-center" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-danger mr-5",
+            attrs: { "data-dismiss": "modal" }
+          },
+          [_vm._v("Close")]
+        ),
         _vm._v(" "),
         _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Submit")])
       ])
