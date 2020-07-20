@@ -31,10 +31,18 @@
                 </div>
                 <div class="row">
                     <div class="col d-flex justify-content-center">
-                        <button class="btn btn-lg btn-danger mr-5">
+                        <button
+                            @click="resetCart"
+                            class="btn btn-lg btn-danger mr-5"
+                        >
                             Cancel
                         </button>
-                        <button class="btn btn-lg btn-primary ml-5">
+                        <button
+                            type="button"
+                            class="btn btn-lg btn-primary ml-5"
+                            data-toggle="modal"
+                            data-target="#checkoutModal"
+                        >
                             Check Out
                         </button>
                     </div>
@@ -51,6 +59,56 @@
                     :selectedProducts="selectedProducts"
                     @product-clicked="handleProductClicked"
                 ></product-list>
+            </div>
+
+            <div class="modal fade" id="checkoutModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="checkoutModalLabel">
+                                Checkout Cart
+                            </h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col">
+                                    Total Paid Amount
+                                </div>
+                                <div class="col">
+                                    <input type="text" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    Total Due
+                                </div>
+                                <div class="col">RM {{ totalPrice }}</div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    Payment Method
+                                </div>
+                                <div class="col">
+                                    <select>
+                                        <option value="Cash">Cash</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    Change
+                                </div>
+                                <div class="col">
+                                    0
+                                </div>
+                            </div>
+                            <div class="row">
+                                <button>Close</button>
+                                <button>Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -162,6 +220,38 @@ export default {
 
             // Calculate item cost
             item.cost = item.price * item.quantity;
+        },
+
+        resetCart() {
+            // Reset state
+            this.selectedProducts = [];
+
+            this.cartItems = [
+                {
+                    product: "P1",
+                    price: 1,
+                    quantity: 0,
+                    cost: 0
+                },
+                {
+                    product: "P2",
+                    price: 2,
+                    quantity: 0,
+                    cost: 0
+                },
+                {
+                    product: "P3",
+                    price: 3,
+                    quantity: 0,
+                    cost: 0
+                },
+                {
+                    product: "P4",
+                    price: 4,
+                    quantity: 0,
+                    cost: 0
+                }
+            ];
         }
     }
 };

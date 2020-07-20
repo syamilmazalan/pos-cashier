@@ -2131,6 +2131,64 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2225,6 +2283,31 @@ __webpack_require__.r(__webpack_exports__);
       item.quantity++; // Calculate item cost
 
       item.cost = item.price * item.quantity;
+    },
+    resetCart: function resetCart() {
+      // Reset state
+      this.selectedProducts = [];
+      this.cartItems = [{
+        product: "P1",
+        price: 1,
+        quantity: 0,
+        cost: 0
+      }, {
+        product: "P2",
+        price: 2,
+        quantity: 0,
+        cost: 0
+      }, {
+        product: "P3",
+        price: 3,
+        quantity: 0,
+        cost: 0
+      }, {
+        product: "P4",
+        price: 4,
+        quantity: 0,
+        cost: 0
+      }];
     }
   }
 });
@@ -38838,14 +38921,42 @@ var render = function() {
           ]
         ),
         _vm._v(" "),
-        _vm._m(1)
+        _c("div", { staticClass: "row" }, [
+          _c("div", { staticClass: "col d-flex justify-content-center" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-lg btn-danger mr-5",
+                on: { click: _vm.resetCart }
+              },
+              [_vm._v("\n                        Cancel\n                    ")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-lg btn-primary ml-5",
+                attrs: {
+                  type: "button",
+                  "data-toggle": "modal",
+                  "data-target": "#checkoutModal"
+                }
+              },
+              [
+                _vm._v(
+                  "\n                        Check Out\n                    "
+                )
+              ]
+            )
+          ])
+        ])
       ]),
       _vm._v(" "),
       _c(
         "div",
         { staticClass: "col border-left p-3" },
         [
-          _vm._m(2),
+          _vm._m(1),
           _vm._v(" "),
           _c("product-list", {
             attrs: { selectedProducts: _vm.selectedProducts },
@@ -38853,7 +38964,37 @@ var render = function() {
           })
         ],
         1
-      )
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "modal fade", attrs: { id: "checkoutModal" } }, [
+        _c("div", { staticClass: "modal-dialog" }, [
+          _c("div", { staticClass: "modal-content" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [
+              _vm._m(3),
+              _vm._v(" "),
+              _c("div", { staticClass: "row" }, [
+                _c("div", { staticClass: "col" }, [
+                  _vm._v(
+                    "\n                                Total Due\n                            "
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "col" }, [
+                  _vm._v("RM " + _vm._s(_vm.totalPrice))
+                ])
+              ]),
+              _vm._v(" "),
+              _vm._m(4),
+              _vm._v(" "),
+              _vm._m(5),
+              _vm._v(" "),
+              _vm._m(6)
+            ])
+          ])
+        ])
+      ])
     ])
   ])
 }
@@ -38872,14 +39013,58 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      { staticClass: "d-flex flex-column align-items-center my-5" },
+      [_c("h5", [_vm._v("\n                    Products\n                ")])]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "checkoutModalLabel" } },
+        [
+          _vm._v(
+            "\n                            Checkout Cart\n                        "
+          )
+        ]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col d-flex justify-content-center" }, [
-        _c("button", { staticClass: "btn btn-lg btn-danger mr-5" }, [
-          _vm._v("\n                        Cancel\n                    ")
-        ]),
-        _vm._v(" "),
-        _c("button", { staticClass: "btn btn-lg btn-primary ml-5" }, [
-          _vm._v("\n                        Check Out\n                    ")
+      _c("div", { staticClass: "col" }, [
+        _vm._v(
+          "\n                                Total Paid Amount\n                            "
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col" }, [
+        _c("input", { attrs: { type: "text" } })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col" }, [
+        _vm._v(
+          "\n                                Payment Method\n                            "
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col" }, [
+        _c("select", [
+          _c("option", { attrs: { value: "Cash" } }, [_vm._v("Cash")])
         ])
       ])
     ])
@@ -38888,11 +39073,29 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "d-flex flex-column align-items-center my-5" },
-      [_c("h5", [_vm._v("\n                    Products\n                ")])]
-    )
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col" }, [
+        _vm._v(
+          "\n                                Change\n                            "
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col" }, [
+        _vm._v(
+          "\n                                0\n                            "
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("button", [_vm._v("Close")]),
+      _vm._v(" "),
+      _c("button", [_vm._v("Submit")])
+    ])
   }
 ]
 render._withStripped = true
