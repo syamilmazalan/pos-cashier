@@ -2054,7 +2054,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ __webpack_exports__["default"] = ({});
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    subTotal: Number
+  }
+});
 
 /***/ }),
 
@@ -2147,6 +2151,18 @@ __webpack_require__.r(__webpack_exports__);
         cost: 0
       }]
     };
+  },
+  computed: {
+    subTotal: function subTotal() {
+      // Map all selected costs into an array
+      var costArray = this.cartItems.map(function (item) {
+        return item.cost;
+      }); // Reduce cost array to get sub total
+
+      return costArray.reduce(function (total, current) {
+        return total + current;
+      });
+    }
   },
   methods: {
     handleProductClicked: function handleProductClicked(value) {
@@ -38679,52 +38695,66 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c("div", [
+    _c("div", { staticClass: "row justify-content-between mb-3" }, [
+      _c("div", { staticClass: "col-3 ml-5" }, [
+        _vm._v("\n            Subtotal\n        ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col-3 d-flex justify-content-center" }, [
+        _vm._v(
+          "\n            RM " + _vm._s(_vm.subTotal.toFixed(2)) + "\n        "
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(0),
+    _vm._v(" "),
+    _vm._m(1),
+    _vm._v(" "),
+    _vm._m(2)
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("div", { staticClass: "row justify-content-between mb-3" }, [
-        _c("div", { staticClass: "col-3 ml-5" }, [
-          _vm._v("\n            Subtotal\n        ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-3 d-flex justify-content-center" }, [
-          _vm._v("\n            RM 6.00\n        ")
-        ])
+    return _c("div", { staticClass: "row justify-content-between mb-3" }, [
+      _c("div", { staticClass: "col-3 ml-5" }, [
+        _vm._v("\n            No of items\n        ")
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "row justify-content-between mb-3" }, [
-        _c("div", { staticClass: "col-3 ml-5" }, [
-          _vm._v("\n            No of items\n        ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-3 d-flex justify-content-center" }, [
-          _vm._v("\n            3\n        ")
-        ])
+      _c("div", { staticClass: "col-3 d-flex justify-content-center" }, [
+        _vm._v("\n            3\n        ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row justify-content-between mb-3" }, [
+      _c("div", { staticClass: "col-3 ml-5" }, [
+        _vm._v("\n            Tax\n        ")
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "row justify-content-between mb-3" }, [
-        _c("div", { staticClass: "col-3 ml-5" }, [
-          _vm._v("\n            Tax\n        ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-3 d-flex justify-content-center" }, [
-          _vm._v("\n            6%\n        ")
-        ])
+      _c("div", { staticClass: "col-3 d-flex justify-content-center" }, [
+        _vm._v("\n            6%\n        ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row justify-content-between" }, [
+      _c("div", { staticClass: "col-3 ml-5" }, [
+        _vm._v("\n            Service charge\n        ")
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "row justify-content-between" }, [
-        _c("div", { staticClass: "col-3 ml-5" }, [
-          _vm._v("\n            Service charge\n        ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-3 d-flex justify-content-center" }, [
-          _vm._v("\n            -\n        ")
-        ])
+      _c("div", { staticClass: "col-3 d-flex justify-content-center" }, [
+        _vm._v("\n            -\n        ")
       ])
     ])
   }
@@ -38770,7 +38800,7 @@ var render = function() {
               }
             }),
             _vm._v(" "),
-            _c("cart-total")
+            _c("cart-total", { attrs: { subTotal: _vm.subTotal } })
           ],
           1
         ),

@@ -5,7 +5,7 @@
                 Subtotal
             </div>
             <div class="col-3 d-flex justify-content-center">
-                RM 6.00
+                RM {{ subTotal.toFixed(2) }}
             </div>
         </div>
         <div class="row justify-content-between mb-3">
@@ -36,7 +36,11 @@
 </template>
 
 <script>
-export default {};
+export default {
+    props: {
+        subTotal: Number
+    }
+};
 </script>
 
 <style lang="scss" scoped></style>

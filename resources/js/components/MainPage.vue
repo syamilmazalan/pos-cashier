@@ -15,7 +15,7 @@
                         @reduce-clicked="handleReduceClicked"
                         @add-clicked="handleAddClicked"
                     ></cart-table>
-                    <cart-total></cart-total>
+                    <cart-total :subTotal="subTotal"></cart-total>
                 </div>
                 <div class="row border-top p-3 justify-content-between mb-5">
                     <div class="col-3 ml-5">
@@ -84,6 +84,18 @@ export default {
                 }
             ]
         };
+    },
+
+    computed: {
+        subTotal: function() {
+            // Map all selected costs into an array
+            const costArray = this.cartItems.map(item => {
+                return item.cost;
+            });
+
+            // Reduce cost array to get sub total
+            return costArray.reduce((total, current) => total + current);
+        }
     },
 
     methods: {
