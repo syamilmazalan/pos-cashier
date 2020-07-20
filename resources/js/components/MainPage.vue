@@ -246,7 +246,7 @@ export default {
 
             await axios
                 .post("/api/transactions", {
-                    tax: this.taxPercent / 100,
+                    tax: this.taxPercent,
                     service_charge: this.serviceCharge,
                     total_amount_cents: this.totalPrice * 100,
                     is_walkin: this.isWalkIn,

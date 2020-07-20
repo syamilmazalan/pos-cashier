@@ -35,9 +35,9 @@ class TransactionController extends Controller
             // Create order items
             foreach ($request->order_items as $item) {
                 $order->orderItems()->create([
-                    'cost_per_item' => $item->cost,
-                    'product_name' => $item->product,
-                    'quantity' => $item->quantity
+                    'cost_per_item' => $item['cost'],
+                    'product_name' => $item['product'],
+                    'quantity' => $item['quantity']
                 ]);
             }
 

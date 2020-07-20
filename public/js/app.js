@@ -2442,7 +2442,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 });
                 _context.next = 4;
                 return axios.post("/api/transactions", {
-                  tax: _this.taxPercent / 100,
+                  tax: _this.taxPercent,
                   service_charge: _this.serviceCharge,
                   total_amount_cents: _this.totalPrice * 100,
                   is_walkin: _this.isWalkIn,
