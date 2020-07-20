@@ -2064,10 +2064,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MainPage.vue?vue&type=script&lang=js&":
-/*!*******************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MainPage.vue?vue&type=script&lang=js& ***!
-  \*******************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CheckoutModal.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CheckoutModal.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -2121,6 +2121,44 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    totalPrice: Number
+  },
+  computed: {
+    totalDue: function totalDue() {
+      return "RM ".concat(this.totalPrice);
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MainPage.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MainPage.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
 //
 //
 //
@@ -38857,6 +38895,149 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CheckoutModal.vue?vue&type=template&id=4f51592c&":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/CheckoutModal.vue?vue&type=template&id=4f51592c& ***!
+  \****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "modal fade", attrs: { id: "checkoutModal" } },
+    [
+      _c("div", { staticClass: "modal-dialog" }, [
+        _c("div", { staticClass: "modal-content" }, [
+          _vm._m(0),
+          _vm._v(" "),
+          _c("div", { staticClass: "modal-body" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col col-form-label",
+                  attrs: { for: "totalDue" }
+                },
+                [
+                  _vm._v(
+                    "\n                        Total Due\n                    "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col" }, [
+                _c("input", {
+                  staticClass: "form-control-plaintext",
+                  attrs: { type: "text", id: "totalDue", readonly: "" },
+                  domProps: { value: _vm.totalDue }
+                })
+              ])
+            ]),
+            _vm._v(" "),
+            _vm._m(2),
+            _vm._v(" "),
+            _vm._m(3),
+            _vm._v(" "),
+            _vm._m(4)
+          ])
+        ])
+      ])
+    ]
+  )
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        { staticClass: "modal-title", attrs: { id: "checkoutModalLabel" } },
+        [_vm._v("\n                    Checkout Cart\n                ")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row" }, [
+      _c(
+        "label",
+        { staticClass: "col col-form-label", attrs: { for: "paidAmount" } },
+        [
+          _vm._v(
+            "\n                        Total Paid Amount\n                    "
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "col" }, [
+        _c("input", {
+          staticClass: "form-control",
+          attrs: { type: "text", id: "paidAmount" }
+        })
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col" }, [
+        _vm._v("\n                        Payment Method\n                    ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col" }, [
+        _c("select", [
+          _c("option", { attrs: { value: "Cash" } }, [_vm._v("Cash")])
+        ])
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("div", { staticClass: "col" }, [
+        _vm._v("\n                        Change\n                    ")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "col" }, [
+        _vm._v("\n                        0\n                    ")
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row" }, [
+      _c("button", [_vm._v("Close")]),
+      _vm._v(" "),
+      _c("button", [_vm._v("Submit")])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/MainPage.vue?vue&type=template&id=2bd38d5a&scoped=true&":
 /*!***********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/MainPage.vue?vue&type=template&id=2bd38d5a&scoped=true& ***!
@@ -38873,129 +39054,114 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container-fluid" }, [
-    _c("div", { staticClass: "row vh-100" }, [
-      _c("div", { staticClass: "col-7" }, [
+    _c(
+      "div",
+      { staticClass: "row vh-100" },
+      [
+        _c("div", { staticClass: "col-7" }, [
+          _c(
+            "div",
+            { staticClass: "p-3" },
+            [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("cart-table", {
+                attrs: {
+                  selectedProducts: _vm.selectedProducts,
+                  cartItems: _vm.cartItems
+                },
+                on: {
+                  "reduce-clicked": _vm.handleReduceClicked,
+                  "add-clicked": _vm.handleAddClicked
+                }
+              }),
+              _vm._v(" "),
+              _c("cart-total", {
+                attrs: {
+                  subTotal: _vm.subTotal,
+                  numberOfItems: _vm.numberOfItems,
+                  taxPercent: _vm.taxPercent
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "row border-top p-3 justify-content-between mb-5" },
+            [
+              _c("div", { staticClass: "col-3 ml-5" }, [
+                _vm._v("\n                    Total\n                ")
+              ]),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "col-3 d-flex justify-content-center" },
+                [
+                  _vm._v(
+                    "\n                    RM " +
+                      _vm._s(_vm.totalPrice) +
+                      "\n                "
+                  )
+                ]
+              )
+            ]
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col d-flex justify-content-center" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-lg btn-danger mr-5",
+                  on: { click: _vm.resetCart }
+                },
+                [
+                  _vm._v(
+                    "\n                        Cancel\n                    "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-lg btn-primary ml-5",
+                  attrs: {
+                    type: "button",
+                    "data-toggle": "modal",
+                    "data-target": "#checkoutModal"
+                  }
+                },
+                [
+                  _vm._v(
+                    "\n                        Check Out\n                    "
+                  )
+                ]
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
         _c(
           "div",
-          { staticClass: "p-3" },
+          { staticClass: "col border-left p-3" },
           [
-            _vm._m(0),
+            _vm._m(1),
             _vm._v(" "),
-            _c("cart-table", {
-              attrs: {
-                selectedProducts: _vm.selectedProducts,
-                cartItems: _vm.cartItems
-              },
-              on: {
-                "reduce-clicked": _vm.handleReduceClicked,
-                "add-clicked": _vm.handleAddClicked
-              }
-            }),
-            _vm._v(" "),
-            _c("cart-total", {
-              attrs: {
-                subTotal: _vm.subTotal,
-                numberOfItems: _vm.numberOfItems,
-                taxPercent: _vm.taxPercent
-              }
+            _c("product-list", {
+              attrs: { selectedProducts: _vm.selectedProducts },
+              on: { "product-clicked": _vm.handleProductClicked }
             })
           ],
           1
         ),
         _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "row border-top p-3 justify-content-between mb-5" },
-          [
-            _c("div", { staticClass: "col-3 ml-5" }, [
-              _vm._v("\n                    Total\n                ")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "col-3 d-flex justify-content-center" }, [
-              _vm._v(
-                "\n                    RM " +
-                  _vm._s(_vm.totalPrice) +
-                  "\n                "
-              )
-            ])
-          ]
-        ),
-        _vm._v(" "),
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col d-flex justify-content-center" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-lg btn-danger mr-5",
-                on: { click: _vm.resetCart }
-              },
-              [_vm._v("\n                        Cancel\n                    ")]
-            ),
-            _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-lg btn-primary ml-5",
-                attrs: {
-                  type: "button",
-                  "data-toggle": "modal",
-                  "data-target": "#checkoutModal"
-                }
-              },
-              [
-                _vm._v(
-                  "\n                        Check Out\n                    "
-                )
-              ]
-            )
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c(
-        "div",
-        { staticClass: "col border-left p-3" },
-        [
-          _vm._m(1),
-          _vm._v(" "),
-          _c("product-list", {
-            attrs: { selectedProducts: _vm.selectedProducts },
-            on: { "product-clicked": _vm.handleProductClicked }
-          })
-        ],
-        1
-      ),
-      _vm._v(" "),
-      _c("div", { staticClass: "modal fade", attrs: { id: "checkoutModal" } }, [
-        _c("div", { staticClass: "modal-dialog" }, [
-          _c("div", { staticClass: "modal-content" }, [
-            _vm._m(2),
-            _vm._v(" "),
-            _c("div", { staticClass: "modal-body" }, [
-              _vm._m(3),
-              _vm._v(" "),
-              _c("div", { staticClass: "row" }, [
-                _c("div", { staticClass: "col" }, [
-                  _vm._v(
-                    "\n                                Total Due\n                            "
-                  )
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "col" }, [
-                  _vm._v("RM " + _vm._s(_vm.totalPrice))
-                ])
-              ]),
-              _vm._v(" "),
-              _vm._m(4),
-              _vm._v(" "),
-              _vm._m(5),
-              _vm._v(" "),
-              _vm._m(6)
-            ])
-          ])
-        ])
-      ])
-    ])
+        _c("checkout-modal", { attrs: { totalPrice: _vm.totalPrice } })
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = [
@@ -39018,84 +39184,6 @@ var staticRenderFns = [
       { staticClass: "d-flex flex-column align-items-center my-5" },
       [_c("h5", [_vm._v("\n                    Products\n                ")])]
     )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "modal-header" }, [
-      _c(
-        "h5",
-        { staticClass: "modal-title", attrs: { id: "checkoutModalLabel" } },
-        [
-          _vm._v(
-            "\n                            Checkout Cart\n                        "
-          )
-        ]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col" }, [
-        _vm._v(
-          "\n                                Total Paid Amount\n                            "
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col" }, [
-        _c("input", { attrs: { type: "text" } })
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col" }, [
-        _vm._v(
-          "\n                                Payment Method\n                            "
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col" }, [
-        _c("select", [
-          _c("option", { attrs: { value: "Cash" } }, [_vm._v("Cash")])
-        ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col" }, [
-        _vm._v(
-          "\n                                Change\n                            "
-        )
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col" }, [
-        _vm._v(
-          "\n                                0\n                            "
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("button", [_vm._v("Close")]),
-      _vm._v(" "),
-      _c("button", [_vm._v("Submit")])
-    ])
   }
 ]
 render._withStripped = true
@@ -51364,6 +51452,7 @@ module.exports = function(module) {
 var map = {
 	"./components/CartTable.vue": "./resources/js/components/CartTable.vue",
 	"./components/CartTotal.vue": "./resources/js/components/CartTotal.vue",
+	"./components/CheckoutModal.vue": "./resources/js/components/CheckoutModal.vue",
 	"./components/MainPage.vue": "./resources/js/components/MainPage.vue",
 	"./components/ProductList.vue": "./resources/js/components/ProductList.vue"
 };
@@ -51626,6 +51715,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CartTotal_vue_vue_type_template_id_ae4327ae_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CartTotal_vue_vue_type_template_id_ae4327ae_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/CheckoutModal.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/CheckoutModal.vue ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _CheckoutModal_vue_vue_type_template_id_4f51592c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./CheckoutModal.vue?vue&type=template&id=4f51592c& */ "./resources/js/components/CheckoutModal.vue?vue&type=template&id=4f51592c&");
+/* harmony import */ var _CheckoutModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./CheckoutModal.vue?vue&type=script&lang=js& */ "./resources/js/components/CheckoutModal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _CheckoutModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _CheckoutModal_vue_vue_type_template_id_4f51592c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _CheckoutModal_vue_vue_type_template_id_4f51592c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/CheckoutModal.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/CheckoutModal.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/CheckoutModal.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CheckoutModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./CheckoutModal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CheckoutModal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_CheckoutModal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/CheckoutModal.vue?vue&type=template&id=4f51592c&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/CheckoutModal.vue?vue&type=template&id=4f51592c& ***!
+  \**********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CheckoutModal_vue_vue_type_template_id_4f51592c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./CheckoutModal.vue?vue&type=template&id=4f51592c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/CheckoutModal.vue?vue&type=template&id=4f51592c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CheckoutModal_vue_vue_type_template_id_4f51592c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_CheckoutModal_vue_vue_type_template_id_4f51592c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

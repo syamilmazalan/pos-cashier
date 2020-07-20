@@ -61,55 +61,7 @@
                 ></product-list>
             </div>
 
-            <div class="modal fade" id="checkoutModal">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="checkoutModalLabel">
-                                Checkout Cart
-                            </h5>
-                        </div>
-                        <div class="modal-body">
-                            <div class="row">
-                                <div class="col">
-                                    Total Paid Amount
-                                </div>
-                                <div class="col">
-                                    <input type="text" />
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    Total Due
-                                </div>
-                                <div class="col">RM {{ totalPrice }}</div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    Payment Method
-                                </div>
-                                <div class="col">
-                                    <select>
-                                        <option value="Cash">Cash</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col">
-                                    Change
-                                </div>
-                                <div class="col">
-                                    0
-                                </div>
-                            </div>
-                            <div class="row">
-                                <button>Close</button>
-                                <button>Submit</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <checkout-modal :totalPrice="totalPrice"></checkout-modal>
         </div>
     </div>
 </template>
