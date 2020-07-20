@@ -26,4 +26,17 @@ class Order extends Model
     {
         return $this->hasMany('App\OrderItem');
     }
+
+    public static function generateReferenceNo()
+    {
+        $a = rand(1000, 9990);
+        $b = rand(10000000, 99999999);
+        $random = $a . '' . $b;
+
+        if (!empty($random) && !self::where('reference_no', $random)->count()) {
+            return $random;
+        } else {
+            self::generateTransactionNo();
+        }
+    }
 }
