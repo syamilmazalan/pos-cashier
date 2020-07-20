@@ -1,67 +1,87 @@
 <template>
     <div class="container-fluid">
         <div class="row vh-100">
-            <div class="col-7">
-                <div class="p-3">
+            <template v-if="loading">
+                <div
+                    class="text-center text-danger my-5 d-flex flex-column justify-content-center align-items-center vw-100"
+                >
                     <div
-                        class="d-flex flex-column align-items-center mt-5 mb-3"
+                        class="spinner-border align-middle"
+                        role="status"
+                    ></div>
+                    <p>Loading...</p>
+                </div>
+            </template>
+
+            <template v-else>
+                <div class="col-7">
+                    <div class="p-3">
+                        <div
+                            class="d-flex flex-column align-items-center mt-5 mb-3"
+                        >
+                            <h5>POS</h5>
+                            <h6>Cashier</h6>
+                        </div>
+                        <cart-table
+                            :selectedProducts="selectedProducts"
+                            :cartItems="cartItems"
+                            @reduce-clicked="handleReduceClicked"
+                            @add-clicked="handleAddClicked"
+                        ></cart-table>
+                        <cart-total
+                            :subTotal="subTotal"
+                            :numberOfItems="numberOfItems"
+                            :taxPercent="taxPercent"
+                        ></cart-total>
+                    </div>
+                    <div
+                        class="row border-top p-3 justify-content-between mb-5"
                     >
-                        <h5>POS</h5>
-                        <h6>Cashier</h6>
+                        <div class="col-3 ml-5">
+                            Total
+                        </div>
+                        <div class="col-3 d-flex justify-content-center">
+                            RM {{ totalPrice }}
+                        </div>
                     </div>
-                    <cart-table
+                    <div class="row">
+                        <div class="col d-flex justify-content-center">
+                            <button
+                                @click="resetCart"
+                                class="btn btn-lg btn-danger mr-5"
+                            >
+                                Cancel
+                            </button>
+                            <button
+                                type="button"
+                                class="btn btn-lg btn-primary ml-5"
+                                data-toggle="modal"
+                                data-target="#checkoutModal"
+                            >
+                                Check Out
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col border-left p-3">
+                    <div class="d-flex flex-column align-items-center my-5">
+                        <h5>
+                            Products
+                        </h5>
+                    </div>
+                    <product-list
                         :selectedProducts="selectedProducts"
-                        :cartItems="cartItems"
-                        @reduce-clicked="handleReduceClicked"
-                        @add-clicked="handleAddClicked"
-                    ></cart-table>
-                    <cart-total
-                        :subTotal="subTotal"
-                        :numberOfItems="numberOfItems"
-                        :taxPercent="taxPercent"
-                    ></cart-total>
+                        @product-clicked="handleProductClicked"
+                    ></product-list>
                 </div>
-                <div class="row border-top p-3 justify-content-between mb-5">
-                    <div class="col-3 ml-5">
-                        Total
-                    </div>
-                    <div class="col-3 d-flex justify-content-center">
-                        RM {{ totalPrice }}
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col d-flex justify-content-center">
-                        <button
-                            @click="resetCart"
-                            class="btn btn-lg btn-danger mr-5"
-                        >
-                            Cancel
-                        </button>
-                        <button
-                            type="button"
-                            class="btn btn-lg btn-primary ml-5"
-                            data-toggle="modal"
-                            data-target="#checkoutModal"
-                        >
-                            Check Out
-                        </button>
-                    </div>
-                </div>
-            </div>
+            </template>
 
-            <div class="col border-left p-3">
-                <div class="d-flex flex-column align-items-center my-5">
-                    <h5>
-                        Products
-                    </h5>
-                </div>
-                <product-list
-                    :selectedProducts="selectedProducts"
-                    @product-clicked="handleProductClicked"
-                ></product-list>
-            </div>
-
-            <checkout-modal :totalPrice="totalPrice"></checkout-modal>
+            <checkout-modal
+                :totalPrice="totalPrice"
+                @payment-method-selected="handleSelect($event)"
+                @transaction-submitted="handleSubmit"
+            ></checkout-modal>
         </div>
     </div>
 </template>
@@ -70,6 +90,7 @@
 export default {
     data() {
         return {
+            loading: false,
             selectedProducts: [],
             cartItems: [
                 {
@@ -97,7 +118,10 @@ export default {
                     cost: 0
                 }
             ],
-            taxPercent: 6
+            taxPercent: 6,
+            serviceCharge: 0,
+            isWalkIn: true,
+            paymentMethod: "Cash"
         };
     },
 
@@ -124,7 +148,10 @@ export default {
 
         totalPrice: function() {
             // Subtotal + tax
-            return (this.subTotal + this.subTotal * (this.taxPercent / 100)).toFixed(2);
+            return (
+                this.subTotal +
+                this.subTotal * (this.taxPercent / 100)
+            ).toFixed(2);
         }
     },
 
@@ -204,6 +231,38 @@ export default {
                     cost: 0
                 }
             ];
+
+            this.paymentMethod = "Cash";
+        },
+
+        handleSelect(event) {
+            this.paymentMethod = event.target.value;
+        },
+
+        async handleSubmit(paidAmount) {
+            this.loading = true;
+
+            const orderItems = this.cartItems.filter(item => item.quantity > 0);
+
+            await axios
+                .post("/api/transactions", {
+                    tax: this.taxPercent / 100,
+                    service_charge: this.serviceCharge,
+                    total_amount_cents: this.totalPrice * 100,
+                    is_walkin: this.isWalkIn,
+                    order_items: orderItems,
+                    payment_method: this.paymentMethod,
+                    paid_amount_cents: paidAmount * 100
+                })
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.log(err);
+                });
+
+            this.resetCart();
+            this.loading = false;
         }
     }
 };

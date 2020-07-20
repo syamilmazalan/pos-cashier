@@ -16,10 +16,8 @@ class TransactionController extends Controller
             'service_charge' => 'required',
             'total_amount_cents' => 'required',
             'is_walkin' => 'required',
-            'order_status' => 'required',
             'order_items' => 'required|array',
             'payment_method' => 'required',
-            'payment_status' => 'required',
             'paid_amount_cents' => 'required'
         ]);
 
@@ -31,7 +29,7 @@ class TransactionController extends Controller
                 'service_charge' => $request->service_charge,
                 'total_amount_cents' => $request->total_amount_cents,
                 'is_walkin' => $request->is_walkin,
-                'status' => $request->order_status
+                'status' => 'Pending'
             ]);
 
             // Create order items
@@ -44,11 +42,22 @@ class TransactionController extends Controller
             }
 
             // Create transaction
-            $order->transactions()->create([
+            $transaction = $order->transactions()->create([
                 'payment_method' => $request->payment_method,
-                'status' => $request->payment_status,
+                'status' => 'Pending',
                 'paid_amount_cents' => $request->paid_amount_cents
             ]);
+
+            // Update status
+            if ($transaction) {
+                $transaction->update([
+                    'status' => 'Completed'
+                ]);
+
+                $order->update([
+                    'status' => 'Paid'
+                ]);
+            }
         });
 
         return response()->json([

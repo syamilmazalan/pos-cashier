@@ -40,7 +40,7 @@
                             Payment Method
                         </label>
                         <div class="col">
-                            <select class="form-control" id="paymentMethod">
+                            <select class="form-control" id="paymentMethod" @change="$emit('payment-method-selected', $event)">
                                 <option value="Cash">Cash</option>
                                 <option value="Credit Card">Credit Card</option>
                                 <option value="E-Wallet">E-Wallet</option>
@@ -64,7 +64,7 @@
                     <div class="modal-footer">
                         <div class="d-flex justify-content-center">
                             <button class="btn btn-danger mr-5" data-dismiss="modal">Close</button>
-                            <button class="btn btn-primary">Submit</button>
+                            <button @click="handleSubmitClicked" class="btn btn-primary">Submit</button>
                         </div>
                     </div>
                 </div>
@@ -76,7 +76,7 @@
 <script>
 export default {
     props: {
-        totalPrice: Number
+        totalPrice: String
     },
 
     data() {
@@ -94,6 +94,21 @@ export default {
             const change = (this.paidAmount - this.totalPrice).toFixed(2);
 
             return `RM ${change}`;
+        }
+    },
+
+    methods: {
+        handleSubmitClicked() {
+            const change = (this.paidAmount - this.totalPrice).toFixed(2);
+
+            // Handle Validation
+            if (change < 0) {
+                return;
+            }
+
+            $('#checkoutModal').modal('hide');
+
+            this.$emit('transaction-submitted', this.paidAmount);
         }
     }
 };
