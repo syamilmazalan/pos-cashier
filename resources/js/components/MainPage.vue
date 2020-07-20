@@ -15,14 +15,18 @@
                         @reduce-clicked="handleReduceClicked"
                         @add-clicked="handleAddClicked"
                     ></cart-table>
-                    <cart-total :subTotal="subTotal"></cart-total>
+                    <cart-total
+                        :subTotal="subTotal"
+                        :numberOfItems="numberOfItems"
+                        :taxPercent="taxPercent"
+                    ></cart-total>
                 </div>
                 <div class="row border-top p-3 justify-content-between mb-5">
                     <div class="col-3 ml-5">
                         Total
                     </div>
                     <div class="col-3 d-flex justify-content-center">
-                        RM 6.36
+                        RM {{ totalPrice }}
                     </div>
                 </div>
                 <div class="row">
@@ -82,7 +86,8 @@ export default {
                     quantity: 0,
                     cost: 0
                 }
-            ]
+            ],
+            taxPercent: 6
         };
     },
 
@@ -95,6 +100,21 @@ export default {
 
             // Reduce cost array to get sub total
             return costArray.reduce((total, current) => total + current);
+        },
+
+        numberOfItems: function() {
+            // Map all selected quantity into an array
+            const quantityArray = this.cartItems.map(item => {
+                return item.quantity;
+            });
+
+            // Reduce quantity array to get sub total
+            return quantityArray.reduce((total, current) => total + current);
+        },
+
+        totalPrice: function() {
+            // Subtotal + tax
+            return this.subTotal + this.subTotal * (this.taxPercent / 100);
         }
     },
 

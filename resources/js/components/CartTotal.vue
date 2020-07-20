@@ -13,7 +13,7 @@
                 No of items
             </div>
             <div class="col-3 d-flex justify-content-center">
-                3
+                {{ numberOfItems }}
             </div>
         </div>
         <div class="row justify-content-between mb-3">
@@ -21,7 +21,7 @@
                 Tax
             </div>
             <div class="col-3 d-flex justify-content-center">
-                6%
+                {{taxPercent}}%
             </div>
         </div>
         <div class="row justify-content-between">
@@ -38,7 +38,9 @@
 <script>
 export default {
     props: {
-        subTotal: Number
+        subTotal: Number,
+        numberOfItems: Number,
+        taxPercent: Number
     }
 };
 </script>

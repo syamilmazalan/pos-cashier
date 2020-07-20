@@ -2056,7 +2056,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    subTotal: Number
+    subTotal: Number,
+    numberOfItems: Number,
+    taxPercent: Number
   }
 });
 
@@ -2071,6 +2073,10 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
 //
 //
 //
@@ -2149,7 +2155,8 @@ __webpack_require__.r(__webpack_exports__);
         price: 4,
         quantity: 0,
         cost: 0
-      }]
+      }],
+      taxPercent: 6
     };
   },
   computed: {
@@ -2162,6 +2169,20 @@ __webpack_require__.r(__webpack_exports__);
       return costArray.reduce(function (total, current) {
         return total + current;
       });
+    },
+    numberOfItems: function numberOfItems() {
+      // Map all selected quantity into an array
+      var quantityArray = this.cartItems.map(function (item) {
+        return item.quantity;
+      }); // Reduce quantity array to get sub total
+
+      return quantityArray.reduce(function (total, current) {
+        return total + current;
+      });
+    },
+    totalPrice: function totalPrice() {
+      // Subtotal + tax
+      return this.subTotal + this.subTotal * (this.taxPercent / 100);
     }
   },
   methods: {
@@ -38708,42 +38729,30 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(0),
-    _vm._v(" "),
-    _vm._m(1),
-    _vm._v(" "),
-    _vm._m(2)
-  ])
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row justify-content-between mb-3" }, [
+    _c("div", { staticClass: "row justify-content-between mb-3" }, [
       _c("div", { staticClass: "col-3 ml-5" }, [
         _vm._v("\n            No of items\n        ")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-3 d-flex justify-content-center" }, [
-        _vm._v("\n            3\n        ")
+        _vm._v("\n            " + _vm._s(_vm.numberOfItems) + "\n        ")
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row justify-content-between mb-3" }, [
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "row justify-content-between mb-3" }, [
       _c("div", { staticClass: "col-3 ml-5" }, [
         _vm._v("\n            Tax\n        ")
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-3 d-flex justify-content-center" }, [
-        _vm._v("\n            6%\n        ")
+        _vm._v("\n            " + _vm._s(_vm.taxPercent) + "%\n        ")
       ])
-    ])
-  },
+    ]),
+    _vm._v(" "),
+    _vm._m(0)
+  ])
+}
+var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -38800,21 +38809,43 @@ var render = function() {
               }
             }),
             _vm._v(" "),
-            _c("cart-total", { attrs: { subTotal: _vm.subTotal } })
+            _c("cart-total", {
+              attrs: {
+                subTotal: _vm.subTotal,
+                numberOfItems: _vm.numberOfItems,
+                taxPercent: _vm.taxPercent
+              }
+            })
           ],
           1
         ),
         _vm._v(" "),
-        _vm._m(1),
+        _c(
+          "div",
+          { staticClass: "row border-top p-3 justify-content-between mb-5" },
+          [
+            _c("div", { staticClass: "col-3 ml-5" }, [
+              _vm._v("\n                    Total\n                ")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-3 d-flex justify-content-center" }, [
+              _vm._v(
+                "\n                    RM " +
+                  _vm._s(_vm.totalPrice) +
+                  "\n                "
+              )
+            ])
+          ]
+        ),
         _vm._v(" "),
-        _vm._m(2)
+        _vm._m(1)
       ]),
       _vm._v(" "),
       _c(
         "div",
         { staticClass: "col border-left p-3" },
         [
-          _vm._m(3),
+          _vm._m(2),
           _vm._v(" "),
           _c("product-list", {
             attrs: { selectedProducts: _vm.selectedProducts },
@@ -38835,24 +38866,6 @@ var staticRenderFns = [
       "div",
       { staticClass: "d-flex flex-column align-items-center mt-5 mb-3" },
       [_c("h5", [_vm._v("POS")]), _vm._v(" "), _c("h6", [_vm._v("Cashier")])]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "row border-top p-3 justify-content-between mb-5" },
-      [
-        _c("div", { staticClass: "col-3 ml-5" }, [
-          _vm._v("\n                    Total\n                ")
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-3 d-flex justify-content-center" }, [
-          _vm._v("\n                    RM 6.36\n                ")
-        ])
-      ]
     )
   },
   function() {
