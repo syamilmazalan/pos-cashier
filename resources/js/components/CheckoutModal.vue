@@ -14,9 +14,10 @@
                         </label>
                         <div class="col">
                             <input
-                                type="text"
+                                type="number"
                                 class="form-control"
                                 id="paidAmount"
+                                v-model="paidAmount"
                             />
                         </div>
                     </div>
@@ -34,27 +35,37 @@
                             />
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col">
+                    <div class="form-group row">
+                        <label for="paymentMethod" class="col col-form-label">
                             Payment Method
-                        </div>
+                        </label>
                         <div class="col">
-                            <select>
+                            <select class="form-control" id="paymentMethod">
                                 <option value="Cash">Cash</option>
+                                <option value="Credit Card">Credit Card</option>
+                                <option value="E-Wallet">E-Wallet</option>
                             </select>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col">
+                    <div class="form-group row">
+                        <label for="change" class="col col-form-label">
                             Change
-                        </div>
+                        </label>
                         <div class="col">
-                            0
+                             <input
+                                type="text"
+                                class="form-control-plaintext"
+                                id="change"
+                                :value="change"
+                                readonly
+                            />
                         </div>
                     </div>
                     <div class="row">
-                        <button>Close</button>
-                        <button>Submit</button>
+                        <div class="col d-flex justify-content-center">
+                            <button class="btn btn-danger mr-5">Close</button>
+                            <button class="btn btn-primary">Submit</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -68,9 +79,21 @@ export default {
         totalPrice: Number
     },
 
+    data() {
+        return {
+            paidAmount: 0
+        }
+    },
+
     computed: {
         totalDue: function() {
             return `RM ${this.totalPrice}`;
+        },
+
+        change: function() {
+            const change = (this.paidAmount - this.totalPrice).toFixed(2);
+
+            return `RM ${change}`;
         }
     }
 };

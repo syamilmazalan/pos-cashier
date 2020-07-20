@@ -124,7 +124,7 @@ export default {
 
         totalPrice: function() {
             // Subtotal + tax
-            return this.subTotal + this.subTotal * (this.taxPercent / 100);
+            return (this.subTotal + this.subTotal * (this.taxPercent / 100)).toFixed(2);
         }
     },
 

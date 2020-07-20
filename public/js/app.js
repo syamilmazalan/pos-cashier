@@ -2137,13 +2137,33 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     totalPrice: Number
   },
+  data: function data() {
+    return {
+      paidAmount: 0
+    };
+  },
   computed: {
     totalDue: function totalDue() {
       return "RM ".concat(this.totalPrice);
+    },
+    change: function change() {
+      var change = (this.paidAmount - this.totalPrice).toFixed(2);
+      return "RM ".concat(change);
     }
   }
 });
@@ -2278,7 +2298,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     totalPrice: function totalPrice() {
       // Subtotal + tax
-      return this.subTotal + this.subTotal * (this.taxPercent / 100);
+      return (this.subTotal + this.subTotal * (this.taxPercent / 100)).toFixed(2);
     }
   },
   methods: {
@@ -38919,7 +38939,44 @@ var render = function() {
           _vm._m(0),
           _vm._v(" "),
           _c("div", { staticClass: "modal-body" }, [
-            _vm._m(1),
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                {
+                  staticClass: "col col-form-label",
+                  attrs: { for: "paidAmount" }
+                },
+                [
+                  _vm._v(
+                    "\n                        Total Paid Amount\n                    "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.paidAmount,
+                      expression: "paidAmount"
+                    }
+                  ],
+                  staticClass: "form-control",
+                  attrs: { type: "number", id: "paidAmount" },
+                  domProps: { value: _vm.paidAmount },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.paidAmount = $event.target.value
+                    }
+                  }
+                })
+              ])
+            ]),
             _vm._v(" "),
             _c("div", { staticClass: "form-group row" }, [
               _c(
@@ -38944,11 +39001,29 @@ var render = function() {
               ])
             ]),
             _vm._v(" "),
-            _vm._m(2),
+            _vm._m(1),
             _vm._v(" "),
-            _vm._m(3),
+            _c("div", { staticClass: "form-group row" }, [
+              _c(
+                "label",
+                { staticClass: "col col-form-label", attrs: { for: "change" } },
+                [
+                  _vm._v(
+                    "\n                        Change\n                    "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              _c("div", { staticClass: "col" }, [
+                _c("input", {
+                  staticClass: "form-control-plaintext",
+                  attrs: { type: "text", id: "change", readonly: "" },
+                  domProps: { value: _vm.change }
+                })
+              ])
+            ]),
             _vm._v(" "),
-            _vm._m(4)
+            _vm._m(2)
           ])
         ])
       ])
@@ -38975,19 +39050,28 @@ var staticRenderFns = [
     return _c("div", { staticClass: "form-group row" }, [
       _c(
         "label",
-        { staticClass: "col col-form-label", attrs: { for: "paidAmount" } },
+        { staticClass: "col col-form-label", attrs: { for: "paymentMethod" } },
         [
           _vm._v(
-            "\n                        Total Paid Amount\n                    "
+            "\n                        Payment Method\n                    "
           )
         ]
       ),
       _vm._v(" "),
       _c("div", { staticClass: "col" }, [
-        _c("input", {
-          staticClass: "form-control",
-          attrs: { type: "text", id: "paidAmount" }
-        })
+        _c(
+          "select",
+          { staticClass: "form-control", attrs: { id: "paymentMethod" } },
+          [
+            _c("option", { attrs: { value: "Cash" } }, [_vm._v("Cash")]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "Credit Card" } }, [
+              _vm._v("Credit Card")
+            ]),
+            _vm._v(" "),
+            _c("option", { attrs: { value: "E-Wallet" } }, [_vm._v("E-Wallet")])
+          ]
+        )
       ])
     ])
   },
@@ -38996,39 +39080,11 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col" }, [
-        _vm._v("\n                        Payment Method\n                    ")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col" }, [
-        _c("select", [
-          _c("option", { attrs: { value: "Cash" } }, [_vm._v("Cash")])
-        ])
+      _c("div", { staticClass: "col d-flex justify-content-center" }, [
+        _c("button", { staticClass: "btn btn-danger mr-5" }, [_vm._v("Close")]),
+        _vm._v(" "),
+        _c("button", { staticClass: "btn btn-primary" }, [_vm._v("Submit")])
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col" }, [
-        _vm._v("\n                        Change\n                    ")
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col" }, [
-        _vm._v("\n                        0\n                    ")
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("button", [_vm._v("Close")]),
-      _vm._v(" "),
-      _c("button", [_vm._v("Submit")])
     ])
   }
 ]
