@@ -18,7 +18,7 @@ Point of Sales Cashier System built with Laravel and Vue.
 3. Install composer dependencies (composer install).
 4. Install npm dependencies (npm install).
 5. Generate env key (php artisan key:generate).
-6. Migrate tables (php artisan:migrate).
+6. Migrate tables (php artisan migrate).
 7. Run on local server (php artisan serve).
 
 
